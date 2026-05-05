@@ -1,69 +1,146 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Rowdies:wght@700&display=swap');
-*{
-    padding: 0;
-    margin: 0;
+/* Використання змінних для швидкої зміни теми */
+:root {
+    --primary-color: #4a90e2;
+    --primary-hover: #357abd;
+    --danger-color: #e74c3c;
+    --danger-hover: #c0392b;
+    --bg-color: #f4f7f6;
+    --text-color: #2c3e50;
+    --border-radius: 8px;
+    --shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+* {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-body{
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(93,9,121,1) 35%, rgba(0,212,255,1) 100%);
-}
-
-h1 {
-    font-family: 'Rowdies', sans-serif;
-    color: coral;
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
 }
 
-.container {
+/* Блок todo-app */
+.todo-app {
+    background: #ffffff;
+    width: 100%;
+    max-width: 450px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.todo-app__header {
+    background-color: var(--primary-color);
+    padding: 20px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.todo-app__title {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.todo-app__content {
+    padding: 25px 20px;
+}
+
+/* Блок форми */
+.todo-form {
     display: flex;
-    justify-content: center;
-    margin: 20px;
+    gap: 10px;
+    margin-bottom: 25px;
 }
 
-ul {
-    font-family: 'Montserrat', sans-serif;
-    color: rgb(255, 0, 0);
-    justify-content: center;
+.todo-form__input {
+    flex-grow: 1;
+    padding: 12px 15px;
+    border: 2px solid #e1e8ed;
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.todo-form__input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.todo-form__btn {
+    padding: 12px 20px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.todo-form__btn:hover {
+    background-color: var(--primary-hover);
+}
+
+/* Блок списку */
+.todo-list {
     list-style: none;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
-.list__item{
-    margin: 5px;
-    background-color: rgb(255, 208, 0);
-    border-color: rgb(255, 123, 0);
-    border: 10px;
-    border-width: 400px;
-    border-radius: 5px;
-    height: 25px;
+/* Блок окремого завдання */
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border: 1px solid #e1e8ed;
+    border-radius: var(--border-radius);
+    transition: all 0.2s ease;
 }
 
-.wrapper{
-    width: 400px;
-    margin: 0 auto;
-    justify-content: center;
+.todo-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
-.input__text {
-    background-color: rgb(255, 255, 255);
-    border-radius: 27px;
-    width: 400px;
-    height: 40px;
+.todo-item__text {
+    word-break: break-word;
+    padding-right: 15px;
+    line-height: 1.4;
 }
 
-.delete__btn{
-    background-color: rgb(255, 255, 255);
-    position: absolute;
-    margin-right: 20px;
-    margin-top: 2px;
-    right: 0;
+.todo-item__btn-delete {
+    background-color: transparent;
+    color: var(--danger-color);
+    border: 1px solid var(--danger-color);
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
 }
 
-.btn {
-    background-color: rgb(2, 255, 213);
-    border-radius: 27px;
-    height: 40px;
+.todo-item__btn-delete:hover {
+    background-color: var(--danger-color);
+    color: #ffffff;
+}
+
+.empty-state {
+    text-align: center;
+    color: #95a5a6;
+    font-style: italic;
+    padding: 20px 0;
 }
